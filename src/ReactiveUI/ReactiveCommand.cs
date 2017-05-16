@@ -1172,20 +1172,21 @@ namespace ReactiveUI
     }
 }
 
+// Commented out because we're not targeting Rx 3 /DanielStolt
 // TODO: dump this once we migrate to Rx 3
-namespace System.Reactive.Linq
-{
-    internal static class WithLatestFromExtensions
-    {
-        public static IObservable<TResult> WithLatestFrom<TLeft, TRight, TResult>(
-            this IObservable<TLeft> @this,
-            IObservable<TRight> other,
-            Func<TLeft, TRight, TResult> resultSelector)
-        {
-            return @this.Publish(os =>
-                other
-                    .Select(a => os.Select(b => resultSelector(b, a)))
-                    .Switch());
-        }
-    }
-}
+//namespace System.Reactive.Linq
+//{
+//    internal static class WithLatestFromExtensions
+//    {
+//        public static IObservable<TResult> WithLatestFrom<TLeft, TRight, TResult>(
+//            this IObservable<TLeft> @this,
+//            IObservable<TRight> other,
+//            Func<TLeft, TRight, TResult> resultSelector)
+//        {
+//            return @this.Publish(os =>
+//                other
+//                    .Select(a => os.Select(b => resultSelector(b, a)))
+//                    .Switch());
+//        }
+//    }
+//}
